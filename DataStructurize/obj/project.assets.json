@@ -186,11 +186,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vit20\\source\\repos\\DataStructurize\\DataStructurize\\DataStructures.csproj",
+      "projectUniqueName": "C:\\Users\\vit20\\source\\repos\\DataStructures\\DataStructurize\\DataStructures.csproj",
       "projectName": "DataStructures",
-      "projectPath": "C:\\Users\\vit20\\source\\repos\\DataStructurize\\DataStructurize\\DataStructures.csproj",
+      "projectPath": "C:\\Users\\vit20\\source\\repos\\DataStructures\\DataStructurize\\DataStructures.csproj",
       "packagesPath": "C:\\Users\\vit20\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vit20\\source\\repos\\DataStructurize\\DataStructurize\\obj\\",
+      "outputPath": "C:\\Users\\vit20\\source\\repos\\DataStructures\\DataStructurize\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
