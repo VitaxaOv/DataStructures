@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "kdU2V1o+o1m20neTKKTSlvfxPof7QxhiHPcQQ0lKPWkzaHn9lr5N0AGvuBPF+vrYk1Ms3kV0TFaHoJcQ4sE6LA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\vit20\\source\\repos\\DataStructurize\\DataStructurize\\DataStructures.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\vit20\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\vit20\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
