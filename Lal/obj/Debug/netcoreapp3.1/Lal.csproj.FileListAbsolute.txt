@@ -1,0 +1,16 @@
+C:\Users\vit20\source\repos\DataStructures\Lal\bin\Debug\netcoreapp3.1\Lal.exe
+C:\Users\vit20\source\repos\DataStructures\Lal\bin\Debug\netcoreapp3.1\Lal.deps.json
+C:\Users\vit20\source\repos\DataStructures\Lal\bin\Debug\netcoreapp3.1\Lal.runtimeconfig.json
+C:\Users\vit20\source\repos\DataStructures\Lal\bin\Debug\netcoreapp3.1\Lal.runtimeconfig.dev.json
+C:\Users\vit20\source\repos\DataStructures\Lal\bin\Debug\netcoreapp3.1\Lal.dll
+C:\Users\vit20\source\repos\DataStructures\Lal\bin\Debug\netcoreapp3.1\Lal.pdb
+C:\Users\vit20\source\repos\DataStructures\Lal\bin\Debug\netcoreapp3.1\DataStructures.dll
+C:\Users\vit20\source\repos\DataStructures\Lal\bin\Debug\netcoreapp3.1\DataStructures.pdb
+C:\Users\vit20\source\repos\DataStructures\Lal\obj\Debug\netcoreapp3.1\Lal.csprojAssemblyReference.cache
+C:\Users\vit20\source\repos\DataStructures\Lal\obj\Debug\netcoreapp3.1\Lal.AssemblyInfoInputs.cache
+C:\Users\vit20\source\repos\DataStructures\Lal\obj\Debug\netcoreapp3.1\Lal.AssemblyInfo.cs
+C:\Users\vit20\source\repos\DataStructures\Lal\obj\Debug\netcoreapp3.1\Lal.csproj.CoreCompileInputs.cache
+C:\Users\vit20\source\repos\DataStructures\Lal\obj\Debug\netcoreapp3.1\Lal.csproj.CopyComplete
+C:\Users\vit20\source\repos\DataStructures\Lal\obj\Debug\netcoreapp3.1\Lal.dll
+C:\Users\vit20\source\repos\DataStructures\Lal\obj\Debug\netcoreapp3.1\Lal.pdb
+C:\Users\vit20\source\repos\DataStructures\Lal\obj\Debug\netcoreapp3.1\Lal.genruntimeconfig.cache
