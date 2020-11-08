@@ -100,10 +100,21 @@ namespace DataStructures
             _array = newarray;
             RizeSizeBack();
         }
+        public void PopBackSeveral(int number)
+        {
+            int[] newarray = new int[Lenght - number];
+            Array.Copy(_array, newarray, Lenght - number);
+            _array = newarray;
+            RizeSizeBack();
+        }
         //удаление из начала одного элемента
         public void PopFront(int size = 1)
         {
             _array = MoveLeft(_array.Length);
+        }
+        public void PopFrontSeveral (int number)
+        {
+            _array = MoveLeft(_array.Length,0,number);
         }
         private int[] MoveLeft(int newlenght, int index = 0, int size = 1)
         {
@@ -126,6 +137,12 @@ namespace DataStructures
         public void DeleteElem(int index)// удаление значения по индексу
         {
             _array = MoveLeft(_array.Length,index);
+        }
+        public void DeleteElemSeveral(int index, int number)// удаление значения по индексу
+        {
+            
+                _array = MoveLeft(_array.Length, index,number);
+            
         }
         //доступ по индексу
         public int Index(int index)// удаление значения по индексу
@@ -152,6 +169,90 @@ namespace DataStructures
                     _array[i] = _array[Lenght - 1 - i];
                     _array[Lenght - 1 - i] = tmp;
                 }
+        }
+        public int[] ArraySort()
+        {
+            for (int i = 0; i < Lenght; i++)
+            {
+                for (int j = 1; j < Lenght; j++)
+                {
+                    if (j > i)
+                    {
+                        if (_array[i] > _array[j])
+                        {
+                            int tmp;
+                            tmp = _array[i];
+                            _array[i] = _array[j];
+                            _array[j] = tmp;
+                        }
+                    }
+                }
+            }
+            return _array;
+        }
+        public int[] ArraySortReverse()
+        {
+            for (int i = 0; i < Lenght; i++)
+            {
+                for (int j = 1; j < Lenght; j++)
+                {
+                    if (j > i)
+                    {
+                        if (_array[i] < _array[j])
+                        {
+                            int tmp;
+                            tmp = _array[i];
+                            _array[i] = _array[j];
+                            _array[j] = tmp;
+                        }
+                    }
+                }
+            }
+            return _array;
+        }
+        public double FindMin()
+        {
+            _array = ArraySort();
+
+            return _array[0];
+        }
+
+        public double FindMax()
+        {
+            _array = ArraySort();
+
+            return _array[Lenght - 1];
+        }
+        public int FindMinIndex()
+        {
+
+            int index = 0;
+            int max = 999999;
+            for (int i = 0; i < Lenght; i++)
+            {
+                if (max > _array[i])
+                {
+                    max = _array[i];
+                    index = i;
+                }
+            }
+
+            return index;
+        }
+         public int FindMaxIndex()
+        {
+
+            int index = 0;
+            int max = -999999;
+            for (int i = 0; i < Lenght; i++)
+            {
+                if (max < _array[i])
+                {
+                    max = _array[i];
+                    index = i;
+                }
+            }
+            return index;
         }
     }
 }

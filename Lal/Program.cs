@@ -20,7 +20,13 @@ namespace Lal
             A.Reverse();
             Console.WriteLine();
             A.ConsoleArr();
-
+            A.ArraySort();
+            Console.WriteLine();
+            A.ConsoleArr();
+            Console.WriteLine(A.FindMax());
+            Console.WriteLine(A.FindMin());
+            Console.WriteLine(A.FindMaxIndex());
+            Console.WriteLine(A.FindMinIndex());
         }
     }
 }
