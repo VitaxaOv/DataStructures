@@ -31,12 +31,25 @@ namespace DataStructures
             _array[Lenght] = value;
             Lenght++;
         }
+        public void Push_BackArray(int[]arr)//добавление массива в конец
+        {
+            if (Lenght+arr.Length > _array.Length)
+            {
+                RizeSizeBack(arr.Length);
+            }
+            for(int i = 0; i < arr.Length; i++)
+            {
+                _array[Lenght + i] = arr[i];
+            }
+            
+            Lenght+=arr.Length;
+        }
         private void RizeSizeBack(int size = 1)//увеличение размера когда добавляем назад
         {
             int newlenght = _array.Length;
-            while (newlenght <= _array.Length + size)
+            while (newlenght <= Lenght + size)
             {
-                newlenght = (int)(newlenght * 1.5d);
+                newlenght = (int)(newlenght * 1.4d);
             }
            
             int[] newarray = new int[newlenght];
@@ -53,19 +66,36 @@ namespace DataStructures
             _array[0] = value;
             Lenght++;
         }
+        public void Push_FrontArray(int[] arr)//добавление значения в начало
+        {
+            if (Lenght + arr.Length > _array.Length)
+            {
+                RizeSizeFront(arr.Length);
+            }
+            _array = MoveRight(_array.Length,0,arr.Length);
+            for(int i = 0; i < arr.Length; i++)
+            {
+                _array[i] = arr[i];
+            }
+            
+            Lenght+=arr.Length;
+        }
         private void RizeSizeFront(int size = 1)//увеличение размера когда добавляем вперед
         {
             int newlenght = _array.Length;
             while (newlenght <= _array.Length + size)
             {
-                newlenght = (int)(newlenght * 1.5d);
+                newlenght = (int)(newlenght * 1.4d);
             }
-           _array=MoveRight(newlenght);
+            int[] newarray = new int[newlenght];
+            Array.Copy(_array, newarray, _array.Length);
+            
+            _array = newarray;
         }
         private int[] MoveRight(int newlenght, int index = 0, int size = 1)// перестановка элементов вправо начиная с элемента index
                                                                            //на size элементов массива размером newlenght
         {
-            int[] newarray = new int[newlenght+size];
+            int[] newarray = new int[newlenght];
             for (int i = index; i < Lenght; i++)
             {
                 newarray[i + size] = _array[i];
