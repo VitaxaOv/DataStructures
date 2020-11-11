@@ -1,6 +1,7 @@
 using DataStructures;
 using NUnit.Framework;
 using System;
+using System.Drawing;
 
 namespace NUnitTestProject1
 {
@@ -83,16 +84,23 @@ namespace NUnitTestProject1
             actual.AddArr(index,arr);
             Assert.AreEqual(expected, actual);
         }
-        [TestCase(new int[] { 1, 2, 3, 4 }, new int[] { 1, 2, 3})]
+        [TestCase(new int[] { 1, 2, 3, 4 }, new int[] { 1,},3)]
         [TestCase(new int[] { 1, 2, 3, 4,2,5 }, new int[] { 1, 2, 3, 4, 2 })]
         [TestCase(new int[] { 5}, new int[] {  })]
         [TestCase(new int[] {2,2 }, new int[] { 2 })]
-        public void Pop_BackTests(int[] array, int[] expArray)
+        public void Pop_BackTests(int[] array, int[] expArray,int size=1)
         {
             ArrayMyList expected = new ArrayMyList(expArray);
             ArrayMyList actual = new ArrayMyList(array);
-            actual.PopBack();
+            actual.PopBack(size);
             Assert.AreEqual(expected, actual);
+        }
+        [TestCase(new int[] { 2, 2 }, new int[] {  },3)]
+        public void PopBackNegativTests(int[] array, int[] expArray,int size=1)
+        {
+            ArrayMyList expected = new ArrayMyList(expArray);
+            ArrayMyList actual = new ArrayMyList(array);
+            Assert.Throws<IndexOutOfRangeException>(()=>actual.PopBack(size));
         }
         [TestCase(new int[] { 1, 2, 3, 4 }, new int[] { 2, 3,4 },1)]
         [TestCase(new int[] { 1, 2, 3, 4, 2, 5 }, new int[] { 4, 2,5 },3)]
@@ -105,6 +113,13 @@ namespace NUnitTestProject1
             actual.PopFront(number);
             Assert.AreEqual(expected, actual);
         }
+        [TestCase(new int[] { 2, 2 }, new int[] { }, 3)]
+        public void PopFrontNegativTests(int[] array, int[] expArray, int size = 1)
+        {
+            ArrayMyList expected = new ArrayMyList(expArray);
+            ArrayMyList actual = new ArrayMyList(array);
+            Assert.Throws<IndexOutOfRangeException>(() => actual.PopFront(size));
+        }
         [TestCase(new int[] { 1, 2, 3, 4 }, new int[] {1, 2,3 }, 3,1)]
         [TestCase(new int[] { 1, 2, 3, 4, 2, 5 }, new int[] { 1,2,2,5},2,2)]
         [TestCase(new int[] { 1, 2, 3, 4, 2, 5 }, new int[] { 1, 2,3 }, 3, 3)]
@@ -116,6 +131,42 @@ namespace NUnitTestProject1
             ArrayMyList actual = new ArrayMyList(array);
             actual.DeleteElem(index,number);
             Assert.AreEqual(expected, actual);
+        }
+        [TestCase(new int[] { 2, 2 }, new int[] { },1 ,3)]
+        [TestCase(new int[] { 2, 2 }, new int[] { }, 5, 1)]
+        public void DeleteElemNegativTests(int[] array, int[] expArray,int index ,int size = 1)
+        {
+            ArrayMyList expected = new ArrayMyList(expArray);
+            ArrayMyList actual = new ArrayMyList(array);
+            Assert.Throws<IndexOutOfRangeException>(() => actual.DeleteElem(index,size));
+        }
+        [TestCase(new int[] { }, 5)]
+        public void FindMinNegativTests(int[] array,int expected)
+        {
+            
+            ArrayMyList actual = new ArrayMyList(array);
+            Assert.Throws<Exception>(() => actual.FindMin());
+        }
+        [TestCase(new int[] { }, 5)]
+        public void FindMinIndexNegativTests(int[] array, int expected)
+        {
+
+            ArrayMyList actual = new ArrayMyList(array);
+            Assert.Throws<Exception>(() => actual.FindMinIndex());
+        }
+        [TestCase(new int[] { }, 5)]
+        public void FindMaxNegativTests(int[] array, int expected)
+        {
+
+            ArrayMyList actual = new ArrayMyList(array);
+            Assert.Throws<Exception>(() => actual.FindMax());
+        }
+        [TestCase(new int[] { }, 5)]
+        public void FindMaxIndexNegativTests(int[] array, int expected)
+        {
+
+            ArrayMyList actual = new ArrayMyList(array);
+            Assert.Throws<Exception>(() => actual.FindMaxIndex());
         }
         [TestCase(new int[] { 1, 2, 3, 4 }, 10)]
         public void SetByIndexNegativeTest(int[] array, int index)
@@ -186,11 +237,25 @@ namespace NUnitTestProject1
         }
         [TestCase(new int[] { 1, 2, 3, 4 }, new int[] { 1,2, 3, 4 })]
         [TestCase(new int[] { 1, 2, 1, 4 }, new int[] { 1,2,4 })]
+        [TestCase(new int[] { 1, 1, 1, 4 }, new int[] { 1,4 })]
+        [TestCase(new int[] { 1, 1, 1, 1 }, new int[] { 1 })]
+        [TestCase(new int[] { }, new int[] { })]
         public void DeletePervTests(int[] array, int[] expArray)
         {
             ArrayMyList expected = new ArrayMyList(expArray);
             ArrayMyList actual = new ArrayMyList(array);
             actual.DeletePerv();
+            Assert.AreEqual(expected, actual);
+        }
+        [TestCase(new int[] { 1, 2, 3, 4 }, new int[] { 1,2, 3, 4 })]
+        [TestCase(new int[] { 1, 2, 2, 4 }, new int[] { 1,2, 4 })]
+        [TestCase(new int[] { 1, 1, 4, 4 }, new int[] { 1,4 })]
+        [TestCase(new int[] {}, new int[] { })]
+        public void DeleteEqualTests(int[] array, int[] expArray)
+        {
+            ArrayMyList expected = new ArrayMyList(expArray);
+            ArrayMyList actual = new ArrayMyList(array);
+            actual.DeleteEqual();
             Assert.AreEqual(expected, actual);
         }
     }

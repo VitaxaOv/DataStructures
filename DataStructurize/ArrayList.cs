@@ -44,17 +44,9 @@ namespace DataStructures
             _array[Lenght] = value;
             Lenght++;
         }
-        private void RizeSizeBack(int size = 1)//увеличение размера когда добавляем назад
+        public int GetLenght()
         {
-            int newlenght = _array.Length;
-            while (newlenght < Lenght + size)
-            {
-                newlenght = (int)(newlenght * 1.34d);
-            }
-
-            int[] newarray = new int[newlenght];
-            Array.Copy(_array, newarray, _array.Length);
-            _array = newarray;
+            return Lenght;
         }
         public void Push_BackArray(int[] arr)//добавление массива в конец
         {
@@ -85,7 +77,7 @@ namespace DataStructures
             {
                 RizeSizeFront();
             }
-            _array = MoveRight(_array.Length);
+            MoveRight(_array.Length);
             _array[0] = value;
             Lenght++;
         }
@@ -95,7 +87,7 @@ namespace DataStructures
             {
                 RizeSizeFront(arr.Length);
             }
-            _array = MoveRight(_array.Length, 0, arr.Length);
+            MoveRight(_array.Length, 0, arr.Length);
             for (int i = 0; i < arr.Length; i++)
             {
                 _array[i] = arr[i];
@@ -103,36 +95,8 @@ namespace DataStructures
 
             Lenght += arr.Length;
         }
-        private void RizeSizeFront(int size = 1)//увеличение размера когда добавляем вперед
-        {
-            int newlenght = _array.Length;
-            while (newlenght <= _array.Length + size)
-            {
-                newlenght = (int)(newlenght * 1.4d);
-            }
-            int[] newarray = new int[newlenght];
-            Array.Copy(_array, newarray, _array.Length);
-
-            _array = newarray;
-        }
-        private int[] MoveRight(int newlenght, int index = 0, int size = 1)// перестановка элементов вправо начиная с элемента index
-                                                                           //на size элементов массива размером newlenght
-        {
-            int[] newarray = new int[newlenght];
-            for (int i = index; i < Lenght; i++)
-            {
-                newarray[i + size] = _array[i];
-            }
-            if (index > 0)
-            {
-                for (int i = 0; i < index; i++)
-                {
-                    newarray[i] = _array[i];
-                }
-            }
-
-            return newarray;
-        }
+        
+        
 
 
         public void AddElem(int index, int value)// добавление значения по индексу
@@ -145,7 +109,7 @@ namespace DataStructures
             {
                 RizeSizeFront();
             }
-            _array = MoveRight(_array.Length, index);
+            MoveRight(_array.Length, index);
             _array[index] = value;
             Lenght++;
         }
@@ -159,7 +123,7 @@ namespace DataStructures
             {
                 RizeSizeFront(arr.Length);
             }
-            _array = MoveRight(_array.Length, index, arr.Length);
+             MoveRight(_array.Length, index, arr.Length);
             for (int i = 0; i < arr.Length; i++)
             {
                 _array[i + index] = arr[i];
@@ -173,7 +137,7 @@ namespace DataStructures
         {
             if (size > Lenght)
             {
-                throw new Exception("Количество удаляемых элементов больше чем существует");
+                throw new IndexOutOfRangeException();
             }
             int[] newarray = new int[Lenght - size];
             Array.Copy(_array, newarray, Lenght - size);
@@ -181,43 +145,27 @@ namespace DataStructures
             Lenght -= size;
         }
 
-        //удаление из начала одного элемента
+        //удаление из начала size элементов
         public void PopFront(int size = 1)
         {
             if (size > Lenght)
             {
-                throw new Exception("Количество удаляемых элементов больше чем существует");
+                throw new IndexOutOfRangeException();
             }
-            _array = MoveLeft(_array.Length,0,size);
+            MoveLeft(_array.Length,0,size);
             Lenght -= size;
         }
-        private int[] MoveLeft(int newlenght, int index = 0, int size = 1)
-        {
-            int[] newarray = new int[newlenght];
-            for (int i = index; i < Lenght - size; i++)
-            {
-                newarray[i] = _array[i + size];
-            }
-            if (index > 0)
-            {
-                for (int i = 0; i < index; i++)
-                {
-                    newarray[i] = _array[i];
-                }
-            }
-
-            return newarray;
-
-        }
+       
        
 
         public void DeleteElem(int index, int number=1)// удаление значения по индексу
         {
-            if (index > Lenght - 1 || index < 0)
+            if (index > Lenght - 1 || index < 0|| number > Lenght)
             {
                 throw new IndexOutOfRangeException();
             }
-            _array = MoveLeft(_array.Length, index, number);
+            
+            MoveLeft(_array.Length, index, number);
             Lenght -= number;
         }
         public int this[int index]
@@ -294,17 +242,25 @@ namespace DataStructures
         }
         public double FindMin()
         {
-            
+            if (Lenght == 0)
+            {
+                throw new Exception("Массив пустой");
+            }
+
             return _array[FindMinIndex()];
         }
 
         public double FindMax()
         {
+            if (Lenght == 0)
+            {
+                throw new Exception("Массив пустой");
+            }
             return _array[FindMaxIndex()];
         }
         public int FindMinIndex()
         {
-            if (_array.Length == 0)
+            if (Lenght == 0)
             {
                 throw new Exception("Массив пустой");
             }
@@ -323,7 +279,7 @@ namespace DataStructures
         }
         public int FindMaxIndex()
         {
-            if (_array.Length == 0)
+            if (Lenght == 0)
             {
                 throw new Exception("Массив пустой");
             }
@@ -341,7 +297,7 @@ namespace DataStructures
         }
         public void DeletePerv()
         {
-            int counter = 0;
+            
             
                 for (int j = 1; j < Lenght; j++)
                 {
@@ -349,11 +305,26 @@ namespace DataStructures
                     {
                         DeleteElem(j);
                     j -= 1;
-                        counter++;
+                        
                     }
                 }
-            
-            Lenght -= counter;
+        }
+        public void DeleteEqual()
+        {
+
+            for (int i = 0; i < Lenght-1; i++)
+            {
+                for (int j = i; j < Lenght-1; j++)
+                {
+                    if (_array[j] == _array[j+1])
+                    {
+                        DeleteElem(j);
+                        j -= 1;
+
+                    }
+                }
+            }
+
         }
         public override bool Equals(object obj)
         {
@@ -374,6 +345,60 @@ namespace DataStructures
                 }
             }
             return true;
+        }
+        private void MoveLeft(int newlenght, int index = 0, int size = 1)
+        {
+            if (size > Lenght - index)
+            {
+                throw new Exception();
+            }
+            if (Lenght == 1)
+            {
+                int[] newarray = new int[] { };
+                _array = newarray;
+            }
+            else
+            {
+                for (int i = index; i < Lenght - 1; i++)
+                {
+                    _array[i] = _array[i + size];
+                }
+            }
+
+        }
+        private void RizeSizeFront(int size = 1)//увеличение размера когда добавляем вперед
+        {
+            int newlenght = _array.Length;
+            while (newlenght <= _array.Length + size)
+            {
+                newlenght = (int)(newlenght * 1.4d);
+            }
+            int[] newarray = new int[newlenght];
+            Array.Copy(_array, newarray, _array.Length);
+
+            _array = newarray;
+        }
+        private void RizeSizeBack(int size = 1)//увеличение размера когда добавляем назад
+        {
+            int newlenght = _array.Length;
+            while (newlenght < Lenght + size)
+            {
+                newlenght = (int)(newlenght * 1.34d);
+            }
+
+            int[] newarray = new int[newlenght];
+            Array.Copy(_array, newarray, _array.Length);
+            _array = newarray;
+        }
+        private void MoveRight(int newlenght, int index = 0, int size = 1)// перестановка элементов вправо начиная с элемента index
+                                                                          //на size элементов массива размером newlenght
+        {
+            for (int i = Lenght - 1; i >= index; i--)
+            {
+                _array[i + size] = _array[i];
+
+            }
+
         }
     }
 }
