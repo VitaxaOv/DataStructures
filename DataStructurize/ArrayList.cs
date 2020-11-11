@@ -11,14 +11,14 @@ namespace DataStructures
         public int Lenght { get; private set; }
         public ArrayMyList()
         {
-            _array = new int[3];//сколько у нас всего памяти выделено
-            Lenght = 0;//сколько мы хотим элементов положить
+            _array = new int[3];
+            Lenght = 0;
         }
         public ArrayMyList(int[] array)
         {
             if (array.Length == 0)
             {
-                _array = new int[3];//сколько у нас всего памяти выделено
+                _array = new int[3];
                 Lenght = 0;
 
             }
@@ -34,7 +34,7 @@ namespace DataStructures
             _array = new int[(int)(value * 1.34d)];
             Lenght = 1;
         }
-        public void Push_Back(int value)//добавление значения в конец
+        public void Push_Back(int value)
         {
             if (Lenght >= _array.Length)
             {
@@ -48,7 +48,7 @@ namespace DataStructures
         {
             return Lenght;
         }
-        public void Push_BackArray(int[] arr)//добавление массива в конец
+        public void Push_BackArray(int[] arr)
         {
             if (Lenght + arr.Length > _array.Length)
             {
@@ -71,7 +71,7 @@ namespace DataStructures
             }
         }
 
-        public void Push_Front(int value)//добавление значения в начало
+        public void Push_Front(int value)
         {
             if (Lenght >= _array.Length)
             {
@@ -81,7 +81,7 @@ namespace DataStructures
             _array[0] = value;
             Lenght++;
         }
-        public void Push_FrontArray(int[] arr)//добавление значения в начало
+        public void Push_FrontArray(int[] arr)
         {
             if (Lenght + arr.Length > _array.Length)
             {
@@ -99,7 +99,7 @@ namespace DataStructures
         
 
 
-        public void AddElem(int index, int value)// добавление значения по индексу
+        public void AddElem(int index, int value)
         {
             if (index > Lenght || index < 0)
             {
@@ -113,7 +113,7 @@ namespace DataStructures
             _array[index] = value;
             Lenght++;
         }
-        public void AddArr(int index, int[] arr)// добавление массива по индексу
+        public void AddArr(int index, int[] arr)
         {
             if (index > Lenght || index < 0)
             {
@@ -132,7 +132,7 @@ namespace DataStructures
         }
 
 
-        // удаление из конца одного элемента
+        
         public void PopBack(int size = 1)
         {
             if (size > Lenght)
@@ -145,7 +145,7 @@ namespace DataStructures
             Lenght -= size;
         }
 
-        //удаление из начала size элементов
+       
         public void PopFront(int size = 1)
         {
             if (size > Lenght)
@@ -158,7 +158,7 @@ namespace DataStructures
        
        
 
-        public void DeleteElem(int index, int number=1)// удаление значения по индексу
+        public void DeleteElem(int index, int number=1)
         {
             if (index > Lenght - 1 || index < 0|| number > Lenght)
             {
@@ -188,7 +188,7 @@ namespace DataStructures
             }
         }
 
-        public int FindIndex(int value)// поиск индекса по значению
+        public int FindIndex(int value)
         {
             for (int i = 0; i < Lenght; i++)
             {
@@ -366,7 +366,7 @@ namespace DataStructures
             }
 
         }
-        private void RizeSizeFront(int size = 1)//увеличение размера когда добавляем вперед
+        private void RizeSizeFront(int size = 1)
         {
             int newlenght = _array.Length;
             while (newlenght <= _array.Length + size)
@@ -378,7 +378,7 @@ namespace DataStructures
 
             _array = newarray;
         }
-        private void RizeSizeBack(int size = 1)//увеличение размера когда добавляем назад
+        private void RizeSizeBack(int size = 1)
         {
             int newlenght = _array.Length;
             while (newlenght < Lenght + size)
@@ -390,8 +390,7 @@ namespace DataStructures
             Array.Copy(_array, newarray, _array.Length);
             _array = newarray;
         }
-        private void MoveRight(int newlenght, int index = 0, int size = 1)// перестановка элементов вправо начиная с элемента index
-                                                                          //на size элементов массива размером newlenght
+        private void MoveRight(int newlenght, int index = 0, int size = 1)
         {
             for (int i = Lenght - 1; i >= index; i--)
             {
