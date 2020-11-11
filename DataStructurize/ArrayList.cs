@@ -122,6 +122,20 @@ namespace DataStructures
             _array[index] = value;
             Lenght++;
         }
+        public void AddArr(int index, int[] arr)// добавление значения по индексу
+        {
+            if (Lenght+arr.Length >= _array.Length)
+            {
+                RizeSizeFront(arr.Length);
+            }
+            _array = MoveRight(_array.Length, index,arr.Length);
+            for(int i = 0; i < arr.Length; i++)
+            {
+                _array[i+index] = arr[i];
+            }
+            
+            Lenght+=arr.Length;
+        }
         // удаление из конца одного элемента
         public void PopBack(int size = 1)
         {
@@ -148,8 +162,8 @@ namespace DataStructures
         }
         private int[] MoveLeft(int newlenght, int index = 0, int size = 1)
         {
-            int[] newarray = new int[newlenght + size];
-            for (int i = index; i < Lenght; i++)
+            int[] newarray = new int[newlenght];
+            for (int i = index; i < Lenght-1; i++)
             {
                 newarray[i] = _array[i+size];
             }
@@ -160,19 +174,20 @@ namespace DataStructures
                     newarray[i] = _array[i];
                 }
             }
-
+            
             return newarray;
 
         }
         public void DeleteElem(int index)// удаление значения по индексу
         {
-            _array = MoveLeft(_array.Length,index);
+            _array = MoveLeft(_array.Length,index,1);
+            Lenght -= 1;
         }
         public void DeleteElemSeveral(int index, int number)// удаление значения по индексу
         {
             
                 _array = MoveLeft(_array.Length, index,number);
-            
+            Lenght -= number;
         }
         //доступ по индексу
         public int Index(int index)// удаление значения по индексу
@@ -283,6 +298,21 @@ namespace DataStructures
                 }
             }
             return index;
+        }
+        public void DeletePerv()
+        {
+            int counter = 0;
+            for(int i = 1; i < Lenght/2; i++)
+            {
+                for(int j=1;j<Lenght;j++)
+                if (_array[0] == _array[j])
+                {
+                    DeleteElem(j);
+                        counter++;
+                }
+            }
+            Lenght -= counter + 1;
+            DeleteElem(0);
         }
     }
 }
