@@ -139,9 +139,10 @@ namespace DataStructures
             {
                 throw new IndexOutOfRangeException();
             }
-            int[] newarray = new int[Lenght - size];
-            Array.Copy(_array, newarray, Lenght - size);
-            _array = newarray;
+            _array[Lenght-1]=_array[Lenght];
+            //int[] newarray = new int[Lenght - size];
+            //Array.Copy(_array, newarray, Lenght - size);
+            //_array = newarray;
             Lenght -= size;
         }
 
