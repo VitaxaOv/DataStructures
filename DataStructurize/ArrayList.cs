@@ -75,7 +75,7 @@ namespace DataStructures
         {
             if (Lenght >= _array.Length)
             {
-                RizeSizeFront();
+                RizeSizeBack();
             }
             MoveRight(_array.Length);
             _array[0] = value;
@@ -85,7 +85,7 @@ namespace DataStructures
         {
             if (Lenght + arr.Length > _array.Length)
             {
-                RizeSizeFront(arr.Length);
+                RizeSizeBack(arr.Length);
             }
             MoveRight(_array.Length, 0, arr.Length);
             for (int i = 0; i < arr.Length; i++)
@@ -107,7 +107,7 @@ namespace DataStructures
             }
             if (Lenght >= _array.Length)
             {
-                RizeSizeFront();
+                RizeSizeBack();
             }
             MoveRight(_array.Length, index);
             _array[index] = value;
@@ -121,7 +121,7 @@ namespace DataStructures
             }
             if (Lenght + arr.Length >= _array.Length)
             {
-                RizeSizeFront(arr.Length);
+                RizeSizeBack(arr.Length);
             }
              MoveRight(_array.Length, index, arr.Length);
             for (int i = 0; i < arr.Length; i++)
@@ -364,18 +364,7 @@ namespace DataStructures
             }
 
         }
-        private void RizeSizeFront(int size = 1)
-        {
-            int newlenght = _array.Length;
-            while (newlenght <= _array.Length + size)
-            {
-                newlenght = (int)(newlenght * 1.4d);
-            }
-            int[] newarray = new int[newlenght];
-            Array.Copy(_array, newarray, _array.Length);
-
-            _array = newarray;
-        }
+      
         private void RizeSizeBack(int size = 1)
         {
             int newlenght = _array.Length;
