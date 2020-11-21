@@ -235,27 +235,26 @@ namespace NUnitTestProject1
 
             Assert.AreEqual(expected, actual.FindMax());
         }
-        [TestCase(new int[] { 1, 2, 3, 4 }, new int[] { 1,2, 3, 4 })]
-        [TestCase(new int[] { 1, 2, 1, 4 }, new int[] { 1,2,4 })]
-        [TestCase(new int[] { 1, 1, 1, 4 }, new int[] { 1,4 })]
-        [TestCase(new int[] { 1, 1, 1, 1 }, new int[] { 1 })]
+        [TestCase(new int[] { 1, 2, 3, 4 }, new int[] { 2, 3, 4 })]
+        [TestCase(new int[] { 1, 2, 1, 4 }, new int[] { 2,4 })]
+        [TestCase(new int[] { 1, 1, 1, 4 }, new int[] { 4 })]
+        [TestCase(new int[] { 1, 1, 1, 1 }, new int[] {  })]
         [TestCase(new int[] { }, new int[] { })]
-        public void DeletePervTests(int[] array, int[] expArray)
+        public void DeleteByFirstTests(int[] array, int[] expArray)
         {
             ArrayMyList expected = new ArrayMyList(expArray);
             ArrayMyList actual = new ArrayMyList(array);
-            actual.DeletePerv();
+            actual.DeleteByFirst();
             Assert.AreEqual(expected, actual);
         }
-        [TestCase(new int[] { 1, 2, 3, 4 }, new int[] { 1,2, 3, 4 })]
-        [TestCase(new int[] { 1, 2, 2, 4 }, new int[] { 1,2, 4 })]
-        [TestCase(new int[] { 1, 1, 4, 4 }, new int[] { 1,4 })]
-        [TestCase(new int[] {}, new int[] { })]
-        public void DeleteEqualTests(int[] array, int[] expArray)
+        [TestCase(new int[] { 1, 2, 3, 4 },3, new int[] { 1,2,4 })]
+        [TestCase(new int[] { 1, 2, 2, 4 },2, new int[] { 1,4 })]
+        [TestCase(new int[] {1},1, new int[] { })]
+        public void DeleteEqualTests(int[] array,int value, int[] expArray)
         {
             ArrayMyList expected = new ArrayMyList(expArray);
             ArrayMyList actual = new ArrayMyList(array);
-            actual.DeleteEqual();
+            actual.DeleteEqualValue(value);
             Assert.AreEqual(expected, actual);
         }
     }

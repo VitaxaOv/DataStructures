@@ -293,36 +293,41 @@ namespace DataStructures
             }
             return index;
         }
-        public void DeletePerv()
+        public void DeleteByFirst()
         {
-            
-            
-                for (int j = 1; j < Lenght; j++)
-                {
-                    if (_array[0] == _array[j])
-                    {
-                        DeleteElem(j);
-                    j -= 1;
-                        
-                    }
-                }
-        }
-        public void DeleteEqual()
-        {
-
-            for (int i = 0; i < Lenght-1; i++)
+            int v = Lenght;
+            int value=_array[0];
+            for (int j = 0; j < v; j++)
             {
-                for (int j = i; j < Lenght-1; j++)
+                int index = FindIndex(value);
+                if (index != -1)
                 {
-                    if (_array[j] == _array[j+1])
-                    {
-                        DeleteElem(j);
-                        j -= 1;
+                    DeleteElem(index);
 
-                    }
+                }
+                else
+                {
+                    return;
                 }
             }
 
+        }
+        public void DeleteEqualValue(int value)
+        {
+            int v = Lenght;
+            for (int j = 0; j < v; j++)
+            {
+                int index = FindIndex(value);
+                if (index != -1)
+                {
+                   DeleteElem(index);
+
+                }
+                else
+                {
+                    return;
+                }
+            }
         }
         public override bool Equals(object obj)
         {
