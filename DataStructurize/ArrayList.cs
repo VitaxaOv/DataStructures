@@ -263,7 +263,7 @@ namespace DataStructures
                 throw new Exception("Массив пустой");
             }
             int index = 0;
-            int max = 999999;
+            int max = _array[0];
             for (int i = 0; i < Lenght; i++)
             {
                 if (max > _array[i])
@@ -282,7 +282,7 @@ namespace DataStructures
                 throw new Exception("Массив пустой");
             }
             int index = 0;
-            int max = -999999;
+            int max = _array[0];
             for (int i = 0; i < Lenght; i++)
             {
                 if (max < _array[i])
